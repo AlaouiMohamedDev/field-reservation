@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-/*import axios from 'axios'
 import swal from 'sweetalert2'
+import axios from 'axios'
+/*
 import  { useRouter} from 'next/router';
 import { setCookie,getCookie } from 'cookies-next';*/
 
@@ -48,7 +49,7 @@ export default function AuthModal() {
         e.persist();
         setLogin({...loginInput,[e.target.name]:e.target.value});
     }
-    /*const router = useRouter();
+    //const router = useRouter();
     
    
     const loginSubmit=(e)=>
@@ -67,7 +68,7 @@ export default function AuthModal() {
             axios.post('http://127.0.0.1:5000/login',data).then(res => {
                       
                 if(res.data.status === 200){
-                    setCookie('name',res.data.name);
+                   /* setCookie('name',res.data.name);
                     setCookie('email',res.data.email);
                     setCookie('public_id',res.data.public_id);
                     setCookie('id',res.data.id);
@@ -78,7 +79,7 @@ export default function AuthModal() {
                     setCookie('image',res.data.image);
                     if(res.data.admin){
                         setCookie('admin',res.data.admin);
-                    }
+                    }*/
                     swal.fire("Bienvenue","","success");
                     ModalAuth()
                     document.location.reload()
@@ -131,7 +132,7 @@ export default function AuthModal() {
         
     }
 
-    */
+
     
     const ModalAuth =()=>{
         const modal= document.querySelector('.authmodal')
@@ -150,7 +151,7 @@ export default function AuthModal() {
                     <h2 className = "text-2xl text-center font-bold text-gray-900 ">
                         Crée votre compte
                     </h2>
-                    <form  className = "flex w-full flex-col space-y-3">
+                    <form onSubmit={registerSubmit} className = "flex w-full flex-col space-y-3">
                         <input name="userName" value={registerInput.userName} onChange={handleRegisterInput} placeholder = "Nom d'utilisateur" type="text" className = "focus:border-main placeholder:text-xs text-sm p-2 border border-gray-100 outline-none text-gray-600" />
                         <input name="email" value={registerInput.email} onChange={handleRegisterInput} placeholder = "Email" type="text" className = "focus:border-main placeholder:text-xs text-sm p-2 border border-gray-100 outline-none text-gray-600" />
                         <input name="password" value={registerInput.password} onChange={handleRegisterInput} placeholder = "Password" type="password" className = "focus:border-main placeholder:text-xs text-sm p-2 border border-gray-100 outline-none text-gray-600" />
@@ -178,11 +179,11 @@ export default function AuthModal() {
                     }
                 </div>
                 {/* Login Modal */}
-                <div className="w-full flex flex-col space-y-4 login relative">
+                <div  className="w-full flex flex-col space-y-4 login relative">
                     <h2 className = "text-2xl text-center font-bold text-gray-900 ">
                         Se connectez à votre compte
                     </h2>
-                    <form method="post"  className = "flex w-full flex-col space-y-3">
+                    <form onSubmit={loginSubmit} method="post"  className = "flex w-full flex-col space-y-3">
                         <input name="email" onChange={handleInput} value={loginInput.email} placeholder = "Adresse Email" type="text" className = "focus:border-main placeholder:text-xs text-sm p-2 border border-gray-100 outline-none text-gray-600" />
                         <input name="password" onChange={handleInput} value={loginInput.password} placeholder = "Mot de passe" type="password" className = "focus:border-main placeholder:text-xs text-sm p-2 border border-gray-100 outline-none text-gray-600" />
                         <button className = "bg-main text-white flex items-center justify-center py-2 rounded text-sm" >
