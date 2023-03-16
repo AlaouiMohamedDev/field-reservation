@@ -208,7 +208,8 @@ export default function AuthModal() {
                     }
                 </div>
             </div>
-            <div className="w-1/2 right-0 h-full  absolute"></div>
+            <img src="images/logo.png" className="absolute bottom-5 right-5 w-24" />
+            <img src="images/logo-a.png" className="absolute top-5 right-[52%] w-24" />
             <img src="images/authModal.jpg" className="hidden md:flex w-1/2 object-right object-cover h-full "/>
         </div>
     </div>
