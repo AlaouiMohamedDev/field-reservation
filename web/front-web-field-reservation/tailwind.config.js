@@ -17,6 +17,7 @@ module.exports = {
         'custGreen':'#0ab39c'
       },
       fontFamily:{
+        'roboto':['Roboto', 'sans-serif'],
         'poppins':['Poppins', 'sans-serif'],
       },
     },
