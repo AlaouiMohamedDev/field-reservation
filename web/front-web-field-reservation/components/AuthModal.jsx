@@ -16,6 +16,11 @@ export default function AuthModal() {
         error_list:[],
     });
 
+    const [isChecked, setIsChecked] = useState(false);
+    function handleCheckboxChange(event) {
+        setIsChecked(event.target.checked);
+        
+      }
     const [loginInput,setLogin] = useState({
         email:'',
         password:'',
@@ -96,6 +101,10 @@ export default function AuthModal() {
 
     const registerSubmit=(e)=>
     {
+        
+       
+        
+
         const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         e.preventDefault();
         if(registerInput.userName=="" ||registerInput.email=="" || registerInput.password=="" || registerInput.confirm=="")
@@ -116,6 +125,7 @@ export default function AuthModal() {
                 userName:registerInput.userName,
                 password:registerInput.password,
                 email:registerInput.email,
+                isOwner:isChecked
             }
     
             axios.post('http://127.0.0.1:5000/register',data).then(res => {
@@ -156,6 +166,12 @@ export default function AuthModal() {
                         <input name="email" value={registerInput.email} onChange={handleRegisterInput} placeholder = "Email" type="text" className = "focus:border-main placeholder:text-xs text-sm p-2 border border-gray-100 outline-none text-gray-600" />
                         <input name="password" value={registerInput.password} onChange={handleRegisterInput} placeholder = "Password" type="password" className = "focus:border-main placeholder:text-xs text-sm p-2 border border-gray-100 outline-none text-gray-600" />
                         <input name="confirm" value={registerInput.confirm} onChange={handleRegisterInput} placeholder = "Confirmer votre Mot de passe" type="password" className = "focus:border-main placeholder:text-xs text-sm p-2 border border-gray-100 outline-none text-gray-600" />
+
+                        <div className="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                            <input name="isChecked" value={isChecked} onChange={handleCheckboxChange} type="checkbox" className="w-4 h-4 text-main bg-gray-100 border-gray-300 rounded checked:bg-main focus:ring-main dark:focus:ring-main dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label for="bordered-checkbox-2" className="w-full py-2 ml-2 text-xs font-medium text-gray-600 dark:text-gray-300">Complex owner</label>
+                        </div>
+
                         <button className = "bg-main text-white flex items-center justify-center py-2 rounded text-sm" >
                                 <span>S'inscrire</span>
                         </button>
